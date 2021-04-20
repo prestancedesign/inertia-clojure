@@ -18,6 +18,8 @@
       inertia-data)))
 
 (defn wrap-inertia
+  "Ring middleware for return either an HTTP or JSON response of a component to use
+  with InertiaJS frontend integration."
   ([handler template asset-version]
    (wrap-inertia handler template asset-version {}))
   ([handler template asset-version share-props]
