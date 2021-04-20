@@ -30,7 +30,6 @@
            (cond (= 302 (:status response)) response
                  inertia-header {:status 200
                                  :headers {"x-inertia" "true"
-                                           "x-inertia-Version" asset-version
                                            "vary" "accept"}
                                  :body data-page}
                  :else (rr/response (template (json/write-str data-page))))))))))
