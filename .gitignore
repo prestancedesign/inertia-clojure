@@ -8,8 +8,9 @@
 /.lein-*
 /.lsp/sqlite*.db
 /.nrepl-history
-/.nrepl-port
+.nrepl-port
 /.rebel_readline_history
 /.socket-repl-port
 .hgignore
 .hg/
+.cpcache

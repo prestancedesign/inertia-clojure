@@ -1,0 +1,6 @@
+{:paths ["src" "resources"]
+ :deps {prestancedesign/inertia-clojure {:local/root "../.."}
+        ring/ring {:mvn/version "1.9.2"}
+        metosin/reitit {:mvn/version "0.5.12"}
+        metosin/muuntaja {:mvn/version "0.6.8"}
+        selmer/selmer {:mvn/version "1.12.33"}}}
