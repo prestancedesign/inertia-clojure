@@ -5,9 +5,9 @@
 
 (defn render
   [component props]
-  (fn [request]
-    (assoc request :inertia {:component component
-                             :props props})))
+  (fn [_]
+    (rr/response {:component component
+                  :props props})))
 
 (defn- only-partial-data [{:keys [component props] :as inertia-data} request]
   (let [partial-data (rr/get-header request "x-inertia-partial-data")
@@ -16,6 +16,7 @@
       (let [only (str/split partial-data #",")]
         (assoc inertia-data :props (select-keys props (map keyword only))))
       inertia-data)))
+
 
 (defn wrap-inertia
   "Ring middleware for return either an HTTP or JSON response of a component to use
@@ -34,7 +35,7 @@
              (rr/status 409)
              (rr/header "x-inertia-location" url))
          (let [inertia-data (-> response
-                                :inertia
+                                :body
                                 (update :props merge share-props)
                                 (only-partial-data request))
                data-page (assoc inertia-data :url url :version asset-version)]
