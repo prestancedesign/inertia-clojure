@@ -9,7 +9,7 @@
     (assoc request :inertia {:component component
                              :props props})))
 
-(defn only-partial-data [{:keys [component props] :as inertia-data} request]
+(defn- only-partial-data [{:keys [component props] :as inertia-data} request]
   (let [partial-data (rr/get-header request "x-inertia-partial-data")
         partial-component (rr/get-header request "x-inertia-partial-component")]
     (if (and partial-data (= component partial-component))
