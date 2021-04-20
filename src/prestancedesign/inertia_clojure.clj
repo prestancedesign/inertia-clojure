@@ -1,7 +1,7 @@
 (ns prestancedesign.inertia-clojure
-  (:require [clojure.data.json :as json]
-            [ring.util.response :as rr]
-            [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [jsonista.core :as json]
+            [ring.util.response :as rr]))
 
 (defn render
   [component props]
@@ -16,7 +16,6 @@
       (let [only (str/split partial-data #",")]
         (assoc inertia-data :props (select-keys props (map keyword only))))
       inertia-data)))
-
 
 (defn wrap-inertia
   "Ring middleware for return either an HTTP or JSON response of a component to use
@@ -44,4 +43,4 @@
                                  :headers {"x-inertia" "true"
                                            "vary" "accept"}
                                  :body data-page}
-                 :else (rr/response (template (json/write-str data-page))))))))))
+                 :else (rr/response (template (json/write-value-as-string data-page))))))))))
