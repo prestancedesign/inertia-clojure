@@ -1,12 +1,21 @@
 (ns prestancedesign.inertia-clojure
   (:require [clojure.data.json :as json]
-            [ring.util.response :as rr]))
+            [ring.util.response :as rr]
+            [clojure.string :as str]))
 
 (defn render
   [component props]
   (fn [request]
     (assoc request :inertia {:component component
                              :props props})))
+
+(defn only-partial-data [{:keys [component props] :as inertia-data} request]
+  (let [partial-data (rr/get-header request "x-inertia-partial-data")
+        partial-component (rr/get-header request "x-inertia-partial-component")]
+    (if (and partial-data (= component partial-component))
+      (let [only (str/split partial-data #",")]
+        (assoc inertia-data :props (select-keys props (map keyword only))))
+      inertia-data)))
 
 (defn wrap-inertia
   ([handler template asset-version]
@@ -24,8 +33,8 @@
              (rr/header "x-inertia-location" url))
          (let [inertia-data (-> response
                                 :inertia
-                                (partial-data request)
-                                (update :props merge share-props))
+                                (update :props merge share-props)
+                                (only-partial-data request))
                data-page (assoc inertia-data :url url :version asset-version)]
            (cond (= 302 (:status response)) response
                  inertia-header {:status 200
