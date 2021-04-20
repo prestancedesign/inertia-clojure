@@ -24,11 +24,13 @@
              (rr/header "x-inertia-location" url))
          (let [inertia-data (-> response
                                 :inertia
+                                (partial-data request)
                                 (update :props merge share-props))
                data-page (assoc inertia-data :url url :version asset-version)]
            (cond (= 302 (:status response)) response
                  inertia-header {:status 200
                                  :headers {"x-inertia" "true"
-                                           "x-inertia-Version" asset-version}
+                                           "x-inertia-Version" asset-version
+                                           "vary" "accept"}
                                  :body data-page}
                  :else (rr/response (template (json/write-str data-page))))))))))
