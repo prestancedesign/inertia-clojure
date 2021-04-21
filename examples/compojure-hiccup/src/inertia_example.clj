@@ -18,10 +18,8 @@
     (page/include-js "/js/app.js")]))
 
 (defroutes routes
-  (GET "/" [] (inertia/render "index" {:name    "Superman"
-                                       :passion ["guitar" "computing"]
-                                       :sport   ["Parkour" "MMA"]}))
-  (GET "/demo" [] (inertia/render "demo" {:name "Superman"})))
+  (GET "/" [] (inertia/render "index" {:name "Superman"}))
+  (GET "/demo" [] (inertia/render "demo" {:name "Batman"})))
 
 (def app
   (-> routes
