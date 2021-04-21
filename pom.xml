@@ -5,7 +5,7 @@
   <artifactId>inertia-clojure</artifactId>
   <version>0.1.0</version>
   <name>com.github.prestancedesign/inertia-clojure</name>
-  <description>FIXME: my new library.</description>
+  <description>A Clojure adapter for Inertia.js</description>
   <url>https://github.com/prestancedesign/inertia-clojure</url>
   <licenses>
     <license>
@@ -15,7 +15,7 @@
   </licenses>
   <developers>
     <developer>
-      <name>Mike</name>
+      <name>Michaël Salihi</name>
     </developer>
   </developers>
   <scm>
