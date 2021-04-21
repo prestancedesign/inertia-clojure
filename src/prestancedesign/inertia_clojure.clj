@@ -30,9 +30,8 @@
            method (:request-method request)
            url (:uri request)]
        (if (and inertia-header (= method :get) (not= inertia-version asset-version))
-         (-> response
-             (rr/status 409)
-             (rr/header "x-inertia-location" url))
+         {:status 409
+          :headers {"x-inertia-location" url}}
          (let [inertia-data (-> response
                                 :body
                                 (update :props merge share-props)
