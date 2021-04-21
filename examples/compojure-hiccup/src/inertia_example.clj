@@ -1,7 +1,7 @@
 (ns inertia-example
   (:require [compojure.core :refer [defroutes GET]]
             [hiccup.page :as page]
-            [prestancedesign.inertia-clojure :as inertia]
+            [inertia.middleware :as inertia]
             [ring.adapter.jetty :as http]
             [ring.middleware.json :refer [wrap-json-response]]))
 

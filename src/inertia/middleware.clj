@@ -1,4 +1,4 @@
-(ns prestancedesign.inertia-clojure
+(ns inertia.middleware
   (:require [clojure.string :as str]
             [jsonista.core :as json]
             [ring.util.response :as rr]))
@@ -9,7 +9,8 @@
     (rr/response {:component component
                   :props props})))
 
-(defn- only-partial-data [{:keys [component props] :as inertia-data} request]
+(defn- only-partial-data
+  [{:keys [component props] :as inertia-data} request]
   (let [partial-data (rr/get-header request "x-inertia-partial-data")
         partial-component (rr/get-header request "x-inertia-partial-component")]
     (if (and partial-data (= component partial-component))

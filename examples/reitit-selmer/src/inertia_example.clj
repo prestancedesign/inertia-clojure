@@ -1,6 +1,6 @@
 (ns inertia-example
   (:require [muuntaja.core :as m]
-            [prestancedesign.inertia-clojure :as inertia]
+            [inertia.middleware :as inertia]
             [reitit.ring :as ring]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [ring.adapter.jetty :as http]
