@@ -31,14 +31,14 @@
       <version>1.10.3</version>
     </dependency>
     <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>data.json</artifactId>
-      <version>2.2.1</version>
-    </dependency>
-    <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-core</artifactId>
       <version>1.9.2</version>
+    </dependency>
+    <dependency>
+      <groupId>metosin</groupId>
+      <artifactId>jsonista</artifactId>
+      <version>0.3.1</version>
     </dependency>
   </dependencies>
   <build>
