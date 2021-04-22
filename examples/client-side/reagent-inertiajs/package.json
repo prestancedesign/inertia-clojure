@@ -1,0 +1,14 @@
+{
+  "name": "reagent-inertiajs",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "shadow-cljs": "2.12.5"
+  },
+  "dependencies": {
+    "@inertiajs/inertia": "^0.8.7",
+    "@inertiajs/inertia-react": "^0.5.12",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
