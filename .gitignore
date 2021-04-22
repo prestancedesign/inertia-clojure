@@ -14,4 +14,4 @@
 .hgignore
 .hg/
 .cpcache
-/examples/resources/public/js/
+/examples/shared-resources/public/js/

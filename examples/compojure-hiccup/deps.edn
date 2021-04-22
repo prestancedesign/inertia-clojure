@@ -1,8 +1,0 @@
-{:paths ["src"],
- :deps
- {prestancedesign/inertia-clojure {:local/root "../.."}
-  hiccup/hiccup {:mvn/version "2.0.0-alpha2"},
-  ring/ring {:mvn/version "1.9.2"},
-  compojure/compojure {:mvn/version "1.6.2"}
-  ring/ring-json {:mvn/version "0.5.1"}}
- :aliases {:run {:main-opts ["-m" "inertia-example"]}}}

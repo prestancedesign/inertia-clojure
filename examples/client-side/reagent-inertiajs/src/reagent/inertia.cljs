@@ -15,15 +15,11 @@
    [:h1 (str "Hello " (:name props))]
    [:> InertiaLink {:href "/"} "Home"]])
 
-(defn load-module
-  "Helper to dynamic load component"
-  [name]
-  (let [fn-var ((ns-publics 'reagent.inertia) (symbol name))]
-    fn-var))
-
 (defn app []
   [:> App {:initial-page (.parse js/JSON (.. el -dataset -page))
-           :resolve-component (fn [name] (r/reactify-component (load-module name)))}])
+           :resolve-component (fn [name] (r/reactify-component (case name
+                                                                 "index" index
+                                                                 "demo" demo)))}])
 
 (defn mount-root []
   (d/render [app] el))

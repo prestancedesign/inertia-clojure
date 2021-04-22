@@ -8,7 +8,7 @@
  :builds
  {:app
   {:target :browser
-   :output-dir "../../resources/public/js"
+   :output-dir "../../shared-resources/public/js"
    :asset-path "/js"
    :modules {:app {:init-fn reagent.inertia/init!}}
    :devtools {:after-load reagent.inertia/mount-root}}}}

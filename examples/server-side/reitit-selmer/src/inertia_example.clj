@@ -14,15 +14,12 @@
 (def app
   (ring/ring-handler
    (ring/router
-    [["/" (inertia/render "index"
-                          {:name "Superman"})]
-     ["/demo" (inertia/render "demo"
-                              {:name "Batman"})]]
-    {:data {:muuntaja   m/instance
+    [["/" (fn [_] (inertia/render "index" {:name "World!"}))]
+     ["/demo" (fn [_] (inertia/render "demo" {:name "Clojure + Inertia"}))]]
+    {:data {:muuntaja m/instance
             :middleware [muuntaja/format-middleware
                          [inertia/wrap-inertia template asset-version]]}})
-   (ring/create-resource-handler {:path "/"
-                                  :root "public"})))
+   (ring/create-resource-handler {:path "/"})))
 
 (defn -main []
   (http/run-jetty #'app {:port 3000 :join? false}))

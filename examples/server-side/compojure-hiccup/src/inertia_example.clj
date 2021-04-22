@@ -1,5 +1,6 @@
 (ns inertia-example
   (:require [compojure.core :refer [defroutes GET]]
+            [compojure.route :as route]
             [hiccup.page :as page]
             [inertia.middleware :as inertia]
             [ring.adapter.jetty :as http]
@@ -18,8 +19,9 @@
     (page/include-js "/js/app.js")]))
 
 (defroutes routes
-  (GET "/" [] (inertia/render "index" {:name "Superman"}))
-  (GET "/demo" [] (inertia/render "demo" {:name "Batman"})))
+  (GET "/" [] (inertia/render "index" {:name "World!"}))
+  (GET "/demo" [] (inertia/render "demo" {:name "Clojure + Inertia"}))
+  (route/resources "/"))
 
 (def app
   (-> routes
