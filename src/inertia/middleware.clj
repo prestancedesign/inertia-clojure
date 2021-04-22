@@ -5,9 +5,8 @@
 
 (defn render
   [component props]
-  (fn [_]
-    (rr/response {:component component
-                  :props props})))
+  (rr/response {:component component
+                :props props}))
 
 (defn- only-partial-data
   [{:keys [component props] :as inertia-data} request]
@@ -33,14 +32,16 @@
        (if (and inertia-header (= method :get) (not= inertia-version asset-version))
          {:status 409
           :headers {"x-inertia-location" url}}
-         (let [inertia-data (-> response
-                                :body
-                                (update :props merge share-props)
-                                (only-partial-data request))
-               data-page (assoc inertia-data :url url :version asset-version)]
-           (cond (= 302 (:status response)) response
-                 inertia-header {:status 200
-                                 :headers {"x-inertia" "true"
-                                           "vary" "accept"}
-                                 :body data-page}
-                 :else (rr/response (template (json/write-value-as-string data-page))))))))))
+         (if (coll? (:body response))
+             (let [inertia-data (-> response
+                                    :body
+                                    (update :props merge share-props)
+                                    (only-partial-data request))
+                   data-page (assoc inertia-data :url url :version asset-version)]
+               (cond (= 302 (:status response)) response
+                     inertia-header {:status 200
+                                     :headers {"x-inertia" "true"
+                                               "vary" "accept"}
+                                     :body data-page}
+                     :else (rr/response (template (json/write-value-as-string data-page)))))
+             response))))))
