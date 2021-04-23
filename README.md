@@ -1,8 +1,8 @@
 # Inertia Clojure
 
-Clojure Middleware adapter for Inertia.js https://inertiajs.com/
+Clojure Middleware adapter for [Inertia.js](https://inertiajs.com/).
 
-The latest versions on Clojar
+The latest versions on Clojars
 
 [![Clojars Project](https://clojars.org/com.github.prestancedesign/inertia-clojure/latest-version.svg)](https://clojars.org/com.github.prestancedesign/inertia-clojure)
 
@@ -14,7 +14,7 @@ Inertia is a new approach to building classic server-driven web apps. From their
 
 Inertia requires an adapter for each backend framework.
 
-For Clojure there is no de facto web framework, so I went with a [Ring](https://github.com/ring-clojure/ring) middleware who shape up the request/response to meet the Inertia.js [protocol](https://inertiajs.com/the-protocol)
+For Clojure there is no de facto web framework, so I went with a [Ring](https://github.com/ring-clojure/ring) middleware who shape up the [`request`](https://github.com/ring-clojure/ring/wiki/Concepts#requests) and [`response`](https://github.com/ring-clojure/ring/wiki/Concepts#responses) to meet the Inertia.js [protocol](https://inertiajs.com/the-protocol).
 
 ## Install
 
@@ -32,13 +32,14 @@ For `project.clj`:
 
 ## Usage
 
-Inertia-clojure contains a standard Ring middleware `wrap-inertia` that you can use with routing libraries like Reitit, Compojure, etc.
+Inertia-clojure contains a standard Ring middleware `wrap-inertia` that you can use with routing libraries like [Reitit](https://github.com/metosin/reitit), [Compojure](https://github.com/weavejester/compojure), etc.
 The middleware must be the last item in your web middleware chain.
 
-It expects two arguments:
+It expects 3 arguments:
 
+* the app handler
 * template: a function that recieves data-page arg - a correctly encoded string of the Inertia page object. The function should return an HTML string, so the template lib is up to you.
-* version (optional): your current asset version https://inertiajs.com/asset-versioning
+* version: your current asset version https://inertiajs.com/asset-versioning
 
 Note: In your HTML template function make sure to always include the `data-page` string in the attribute of the HTML node you want to render your JavaScript app in.
 For more information on how Inertia works read the protocol on the Inertia website https://inertiajs.com/the-protocol.
