@@ -21,13 +21,13 @@ For Clojure there is no de facto web framework, so I went with a [Ring](https://
 For `deps.edn`:
 
 ```clojure
-com.github.prestancedesign/inertia-clojure {:mvn/version "0.1.0"}
+com.github.prestancedesign/inertia-clojure {:mvn/version "0.2.0"}
 ```
 
 For `project.clj`:
 
 ```clojure
-[com.github.prestancedesign/inertia-clojure "0.1.0"]
+[com.github.prestancedesign/inertia-clojure "0.2.0"]
 ```
 
 ## Usage

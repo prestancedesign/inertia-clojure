@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.prestancedesign</groupId>
   <artifactId>inertia-clojure</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <name>com.github.prestancedesign/inertia-clojure</name>
   <description>A Clojure adapter for Inertia.js</description>
   <url>https://github.com/prestancedesign/inertia-clojure</url>
@@ -22,7 +22,7 @@
     <url>https://github.com/prestancedesign/inertia-clojure</url>
     <connection>scm:git:git://github.com/prestancedesign/inertia-clojure.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/prestancedesign/inertia-clojure.git</developerConnection>
-    <tag>v0.1.0</tag>
+    <tag>v0.2.0</tag>
   </scm>
   <dependencies>
     <dependency>
@@ -39,6 +39,11 @@
       <groupId>metosin</groupId>
       <artifactId>jsonista</artifactId>
       <version>0.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>metosin</groupId>
+      <artifactId>muuntaja</artifactId>
+      <version>0.6.8</version>
     </dependency>
   </dependencies>
   <build>
