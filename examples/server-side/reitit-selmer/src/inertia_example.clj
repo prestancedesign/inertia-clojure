@@ -1,8 +1,6 @@
 (ns inertia-example
-  (:require [muuntaja.core :as m]
-            [inertia.middleware :as inertia]
+  (:require [inertia.middleware :as inertia]
             [reitit.ring :as ring]
-            [reitit.ring.middleware.muuntaja :as muuntaja]
             [ring.adapter.jetty :as http]
             [selmer.parser :as html]))
 
@@ -14,11 +12,12 @@
 (def app
   (ring/ring-handler
    (ring/router
-    [["/" (fn [_] (inertia/render "index" {:name "World!"}))]
-     ["/demo" (fn [_] (inertia/render "demo" {:name "Clojure + Inertia"}))]]
-    {:data {:muuntaja m/instance
-            :middleware [muuntaja/format-middleware
-                         [inertia/wrap-inertia template asset-version]]}})
+    [["/" (fn [_] (inertia/render "index" {:title "Hello World!"}))]
+     ["/demo" (fn [_] (inertia/render "demo"
+                                      {:title "Clojure + Inertia"
+                                       :date (str (java.util.Date.))}))]]
+    {:data
+     {:middleware [[inertia/wrap-inertia template asset-version]]}})
    (ring/create-resource-handler {:path "/"})))
 
 (defn -main []

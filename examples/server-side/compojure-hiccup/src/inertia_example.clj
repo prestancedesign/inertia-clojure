@@ -3,8 +3,7 @@
             [compojure.route :as route]
             [hiccup.page :as page]
             [inertia.middleware :as inertia]
-            [ring.adapter.jetty :as http]
-            [ring.middleware.json :refer [wrap-json-response]]))
+            [ring.adapter.jetty :as http]))
 
 (def asset-version "1")
 
@@ -19,14 +18,12 @@
     (page/include-js "/js/app.js")]))
 
 (defroutes routes
-  (GET "/" [] (inertia/render "index" {:name "World!"}))
-  (GET "/demo" [] (inertia/render "demo" {:name "Clojure + Inertia"}))
+  (GET "/" [] (inertia/render "index" {:title "Hello World!"}))
+  (GET "/demo" [] (inertia/render "demo" {:title "Clojure + Inertia"
+                                          :date (str (java.util.Date.))}))
   (route/resources "/"))
 
-(def app
-  (-> routes
-      (inertia/wrap-inertia template asset-version)
-      wrap-json-response))
+(def app (inertia/wrap-inertia routes template asset-version))
 
 (defn -main []
   (http/run-jetty #'app {:port 3000 :join? false}))
