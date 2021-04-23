@@ -1,6 +1,7 @@
 (ns inertia.middleware
   (:require [clojure.string :as str]
             [jsonista.core :as json]
+            [muuntaja.middleware :as middleware]
             [ring.util.response :as rr]))
 
 (defn render
@@ -23,25 +24,26 @@
   ([handler template asset-version]
    (wrap-inertia handler template asset-version {}))
   ([handler template asset-version share-props]
-   (fn [request]
-     (let [response (handler request)
-           inertia-header (rr/get-header request "x-inertia")
-           inertia-version (rr/get-header request "x-inertia-version")
-           method (:request-method request)
-           url (:uri request)]
-       (if (and inertia-header (= method :get) (not= inertia-version asset-version))
-         {:status 409
-          :headers {"x-inertia-location" url}}
-         (if (coll? (:body response))
-             (let [inertia-data (-> response
-                                    :body
-                                    (update :props merge share-props)
-                                    (only-partial-data request))
-                   data-page (assoc inertia-data :url url :version asset-version)]
-               (cond (= 302 (:status response)) response
-                     inertia-header {:status 200
-                                     :headers {"x-inertia" "true"
-                                               "vary" "accept"}
-                                     :body data-page}
-                     :else (rr/response (template (json/write-value-as-string data-page)))))
-             response))))))
+   (middleware/wrap-format
+    (fn [request]
+      (let [response (handler request)
+            inertia-header (rr/get-header request "x-inertia")
+            inertia-version (rr/get-header request "x-inertia-version")
+            method (:request-method request)
+            url (:uri request)]
+        (if (and inertia-header (= method :get) (not= inertia-version asset-version))
+          {:status 409
+           :headers {"x-inertia-location" url}}
+          (if (coll? (:body response))
+            (let [inertia-data (-> response
+                                   :body
+                                   (update :props merge share-props)
+                                   (only-partial-data request))
+                  data-page (assoc inertia-data :url url :version asset-version)]
+              (cond (= 302 (:status response)) response
+                    inertia-header {:status 200
+                                    :headers {"x-inertia" "true"
+                                              "vary" "accept"}
+                                    :body data-page}
+                    :else (rr/response (template (json/write-value-as-string data-page)))))
+            response)))))))
