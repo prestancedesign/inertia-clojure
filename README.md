@@ -73,12 +73,13 @@ For more information on how Inertia works read the protocol on the Inertia websi
 (http/run-server app {:port 3000})
 ```
 
-## More examples
+## Project examples
 
 ### Server side
 
-* [Reitit / Selmer](examples/server-side/reitit-selmer) : An example with Reitit routing and Selmer template lib
-* [Compojure / Hiccup](examples/server-side/compojure-hiccup) : An example with Compojure routing and Hiccup for the template
+* [Usermanager](https://github.com/prestancedesign/usermanager-reagent-inertia-example): Single Page App demo in Clojure, Ring, Compojure and Reagent/Inertia.js
+* [Reitit / Selmer](examples/server-side/reitit-selmer): An example with Reitit routing and Selmer template lib
+* [Compojure / Hiccup](examples/server-side/compojure-hiccup): An example with Compojure routing and Hiccup for the template
 
 ### Client side
 
