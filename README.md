@@ -75,9 +75,13 @@ For more information on how Inertia works read the protocol on the Inertia websi
 
 ## Project examples
 
+### Full stack
+
+* [Usermanager Integrant + Reitit stack](https://github.com/prestancedesign/reagent-inertia-reitit-integrant-fullstack): Single page application in Clojure Ring, Reitit + Reagent/Inertia.js
+* [Usermanager Component + Compojure stack](https://github.com/prestancedesign/usermanager-reagent-inertia-example): Single Page App demo in Clojure, Ring, Compojure + Reagent/Inertia.js
+
 ### Server side
 
-* [Usermanager](https://github.com/prestancedesign/usermanager-reagent-inertia-example): Single Page App demo in Clojure, Ring, Compojure and Reagent/Inertia.js
 * [Reitit / Selmer](examples/server-side/reitit-selmer): An example with Reitit routing and Selmer template lib
 * [Compojure / Hiccup](examples/server-side/compojure-hiccup): An example with Compojure routing and Hiccup for the template
 
