@@ -14,11 +14,10 @@
    (ring/router
     [["/" (fn [_] (inertia/render "index" {:title "Hello World!"}))]
      ["/demo" (fn [_] (inertia/render "demo"
-                                      {:title "Clojure + Inertia"
-                                       :date (str (java.util.Date.))}))]]
-    {:data
-     {:middleware [[inertia/wrap-inertia template asset-version]]}})
-   (ring/create-resource-handler {:path "/"})))
+                                     {:title "Clojure + Inertia"
+                                      :date (str (java.util.Date.))}))]])
+   (ring/create-resource-handler {:path "/"})
+   {:middleware [[inertia/wrap-inertia template asset-version]]}))
 
 (defn -main []
   (http/run-jetty #'app {:port 3000 :join? false}))
