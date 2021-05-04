@@ -6,7 +6,8 @@
 (def el (.getElementById js/document "app"))
 
 (defn menu []
-  [:p "Navigate pages without reloading: "
+  [:<>
+   [:p "Navigate pages without reloading: "]
    [:ul
     [:li [:> InertiaLink {:href "/"} "Home"]]
     [:li [:> InertiaLink {:href "/demo"} "Demo"]]]])
