@@ -1,6 +1,6 @@
 # Inertia Clojure
 
-Clojure Middleware adapter for [Inertia.js](https://inertiajs.com/).
+Clojure Middleware adapter for [Inertia.js](https://inertiajs.com/) to build single-page apps, without building an API.
 
 The latest versions on Clojars
 
@@ -64,8 +64,8 @@ For more information on how Inertia works read the protocol on the Inertia websi
     (page/include-js "/js/app.js")])) ; Include your Reagent, React, Vue or Svelte SPA
 
 (defroutes routes
-  (GET "/" [] (inertia/render "index" {:title "Hello World!"}))
-  (GET "/demo" [] (inertia/render "demo" {:title "Clojure + Inertia"}))
+  (GET "/" [] (inertia/render :index {:title "Hello World!"})) ; Use the Inertia render helper to return formatted response
+  (GET "/demo" [] (inertia/render :demo {:title "Clojure + Inertia"}))
   (route/resources "/"))
 
 (def app (inertia/wrap-inertia routes template asset-version)) ; Wrap your handler with the Inertia middleware
@@ -98,6 +98,7 @@ Features of the official server-side adapters are still in progress.
 - [x] Shared data
 - [x] Partial reloads
 - [X] Assets versionning
+- [ ] Validation error props
 - [ ] Lazy loaded props
 - [ ] Root template data
 
