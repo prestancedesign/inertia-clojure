@@ -26,9 +26,10 @@
      [:p "This is very useful for form submission to keep information filled in while handling errors."]
      [:p "Try the counter and click the refresh link. You can see the updated seconds however the counter value stay in place."]
      [:p (str "Counter: " @counter)]
-     [:button {:on-click #(swap! counter inc)} "+"]
      [:p (str "Date: " date)]
-     [:> InertiaLink {:href "/demo" :preserve-state true} "Refresh date"]]))
+     [:button {:on-click #(swap! counter inc)} "+"]
+     [:> InertiaLink {:href "/demo" :preserve-state true
+                      :as "button"} "Refresh date"]]))
 
 (defn app []
   [:> App {:initial-page (.parse js/JSON (.. el -dataset -page))
