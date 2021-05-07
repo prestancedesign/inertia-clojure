@@ -1,0 +1,6 @@
+#+TITLE: Inertia Clojure TODO
+
+*** TODO Try to implement Inertia render function as macro or defmulti
+    to transform simple args symbol to map:
+    - https://stackoverflow.com/questions/45082383/clojure-dry-pattern-for-hash-map
+    - https://stackoverflow.com/questions/36181365/creating-a-map-from-a-var-in-clojure/36181598#36181598
