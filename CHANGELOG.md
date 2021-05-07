@@ -1,24 +1,13 @@
 # Change Log
-All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
-## [Unreleased]
+## 0.2.0 - 2021-04-23
 ### Changed
-- Add a new arity to `make-widget-async` to provide a different widget shape.
-
-## [0.1.1] - 2021-04-19
-### Changed
-- Documentation on how to make the widgets.
-
-### Removed
-- `make-widget-sync` - we're all async, all the time.
+- Replace JSON lib
+- Renaming namespace
 
 ### Fixed
-- Fixed widget maker to keep working when daylight savings switches over.
+- Does not return body content for 409 HTTP status
+- Condition to apply transformation only on collection type response
 
-## 0.1.0 - 2021-04-19
-### Added
-- Files from the new template.
-- Widget maker public API - `make-widget-sync`.
-
-[Unreleased]: https://github.com/prestancedesign/inertia-clojure/compare/0.1.1...HEAD
-[0.1.1]: https://github.com/prestancedesign/inertia-clojure/compare/0.1.0...0.1.1
+## 0.1.0 - 2021-04-20
+- First release
