@@ -33,12 +33,12 @@
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-core</artifactId>
-      <version>1.9.2</version>
+      <version>1.9.3</version>
     </dependency>
     <dependency>
       <groupId>metosin</groupId>
       <artifactId>jsonista</artifactId>
-      <version>0.3.1</version>
+      <version>0.3.3</version>
     </dependency>
     <dependency>
       <groupId>metosin</groupId>
