@@ -32,7 +32,7 @@
             inertia-header (rr/get-header request "x-inertia")
             inertia-version (rr/get-header request "x-inertia-version")
             method (:request-method request)
-            url (:uri request)]
+            url (str (:uri request) (when-let [qs (:query-string request)] (str "?" qs)))]
         (if (and inertia-header (= method :get) (not= inertia-version asset-version))
           {:status 409
            :headers {"x-inertia-location" url}}
