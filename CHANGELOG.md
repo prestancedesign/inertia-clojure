@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.2.1 - 2021-05123
+### Changed
+- Append query-string to URL props to allowing browser History.pushState
+- Multi-arity Inertia render function
+
 ## 0.2.0 - 2021-04-23
 ### Changed
 - Replace JSON lib

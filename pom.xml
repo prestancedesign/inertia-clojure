@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.prestancedesign</groupId>
   <artifactId>inertia-clojure</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <name>com.github.prestancedesign/inertia-clojure</name>
   <description>A Clojure adapter for Inertia.js</description>
   <url>https://github.com/prestancedesign/inertia-clojure</url>
@@ -22,7 +22,7 @@
     <url>https://github.com/prestancedesign/inertia-clojure</url>
     <connection>scm:git:git://github.com/prestancedesign/inertia-clojure.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/prestancedesign/inertia-clojure.git</developerConnection>
-    <tag>v0.2.0</tag>
+    <tag>v0.2.1</tag>
   </scm>
   <dependencies>
     <dependency>
