@@ -5,9 +5,11 @@
             [ring.util.response :as rr]))
 
 (defn render
-  [component props]
-  (rr/response {:component component
-                :props props}))
+  ([component]
+   (render component {}))
+  ([component props]
+   (rr/response {:component component
+                 :props props})))
 
 (defn- only-partial-data
   [{:keys [component props] :as inertia-data} request]
