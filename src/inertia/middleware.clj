@@ -20,6 +20,11 @@
         (assoc inertia-data :props (select-keys props (map keyword only))))
       inertia-data)))
 
+(defn- request-url [request]
+  (str (:uri request)
+       (when-let [qs (:query-string request)]
+         (str "?" qs))))
+
 (defn wrap-inertia
   "Ring middleware for return either an HTTP or JSON response of a component to use
   with InertiaJS frontend integration."
@@ -32,7 +37,7 @@
             inertia-header (rr/get-header request "x-inertia")
             inertia-version (rr/get-header request "x-inertia-version")
             method (:request-method request)
-            url (str (:uri request) (when-let [qs (:query-string request)] (str "?" qs)))]
+            url (request-url request)]
         (if (and inertia-header (= method :get) (not= inertia-version asset-version))
           {:status 409
            :headers {"x-inertia-location" url}}
