@@ -77,6 +77,7 @@ For more information on how Inertia works read the protocol on the Inertia websi
 
 ### Full stack
 
+* [Ping CRM](https://github.com/prestancedesign/clojure-inertia-pingcrm-demo): port of the official Inertia demo to Clojure Ring, Reitit, Integrant and next.jdbc
 * [Usermanager Integrant + Reitit stack](https://github.com/prestancedesign/reagent-inertia-reitit-integrant-fullstack): Single page application in Clojure Ring, Reitit + Reagent/Inertia.js
 * [Usermanager Component + Compojure stack](https://github.com/prestancedesign/usermanager-reagent-inertia-example): Single Page App demo in Clojure, Ring, Compojure + Reagent/Inertia.js
 
