@@ -29,15 +29,14 @@
   "Ring middleware for return either an HTTP or JSON response of a component to use
   with InertiaJS frontend integration."
   ([handler template asset-version]
-   (wrap-inertia handler template asset-version {}))
-  ([handler template asset-version share-props]
    (middleware/wrap-format
     (fn [request]
       (let [response (handler request)
             inertia-header (rr/get-header request "x-inertia")
             inertia-version (rr/get-header request "x-inertia-version")
             method (:request-method request)
-            url (request-url request)]
+            url (request-url request)
+            share-props (:inertia-share request)]
         (if (and inertia-header (= method :get) (not= inertia-version asset-version))
           {:status 409
            :headers {"x-inertia-location" url}}
