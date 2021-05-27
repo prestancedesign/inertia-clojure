@@ -99,7 +99,7 @@ Features of the official server-side adapters are still in progress.
 - [x] Shared data
 - [x] Partial reloads
 - [X] Assets versionning
-- [ ] Validation error props
+- [x] Validation error props
 - [ ] Lazy loaded props
 - [ ] Root template data
 
