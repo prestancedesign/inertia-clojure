@@ -51,5 +51,6 @@
                                     :headers {"x-inertia" "true"
                                               "vary" "accept"}
                                     :body data-page}
-                    :else (rr/response (template (json/write-value-as-string data-page)))))
+                    :else (-> (rr/response (template (json/write-value-as-string data-page)))
+                            (rr/content-type "text/html"))))
             response)))))))
