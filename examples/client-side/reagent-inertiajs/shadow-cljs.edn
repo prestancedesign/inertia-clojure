@@ -3,7 +3,8 @@
  ["src"]
 
  :dependencies
- [[reagent "1.0.0"]]
+ [[reagent "1.0.0"]
+  [applied-science/js-interop "0.2.7"]]
 
  :builds
  {:app
@@ -11,4 +12,4 @@
    :output-dir "../../shared-resources/public/js"
    :asset-path "/js"
    :modules {:app {:init-fn reagent.inertia/init!}}
-   :devtools {:after-load reagent.inertia/mount-root}}}}
+   :devtools {:after-load reagent.inertia/start}}}}

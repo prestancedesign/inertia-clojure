@@ -1,26 +1,24 @@
 (ns reagent.inertia
-  (:require ["@inertiajs/inertia-react" :refer [App InertiaLink]]
+  (:require ["@inertiajs/inertia-react" :refer [createInertiaApp InertiaLink]]
             [reagent.core :as r]
-            [reagent.dom :as d]))
+            [reagent.dom :as d]
+            [applied-science.js-interop :as j]))
 
-(def el (.getElementById js/document "app"))
-
-(defn menu []
-  [:<>
-   [:p "Navigate pages without reloading: "]
-   [:ul
-    [:li [:> InertiaLink {:href "/"} "Home"]]
-    [:li [:> InertiaLink {:href "/demo"} "Demo"]]]])
+(defn layout [& children]
+  (into
+   [:<>
+    [:p "Navigate pages without reloading: "]
+    [:ul
+     [:li [:> InertiaLink {:href "/"} "Home"]]
+     [:li [:> InertiaLink {:href "/demo"} "Demo"]]]]
+   children))
 
 (defn index [{:keys [title]}]
-  [:<>
-   [menu]
-   [:h1 title]])
+  [:h1 title])
 
 (defn demo [{:keys [title date]}]
   (r/with-let [counter (r/atom 0)]
     [:<>
-     [menu]
      [:h1 title]
      [:p "Local state Reagent Atom or React useState can be preserved when reloading page/component."]
      [:p "This is very useful for form submission to keep information filled in while handling errors."]
@@ -31,14 +29,18 @@
      [:> InertiaLink {:href "/demo" :preserve-state true
                       :as "button"} "Refresh date"]]))
 
-(defn app []
-  [:> App {:initial-page (.parse js/JSON (.. el -dataset -page))
-           :resolve-component (fn [name] (r/reactify-component (case name
-                                                                 "index" index
-                                                                 "demo" demo)))}])
+;; Add new page component to this list
+(def pages {"index" #'index
+            "demo" #'demo})
 
-(defn mount-root []
-  (d/render [app] el))
+(defn start []
+  (createInertiaApp
+   #js {:resolve (fn [name]
+                   (let [^js comp (r/reactify-component (get pages name))]
+                     (set! (.-layout comp) (fn [page] (r/as-element [layout page])))
+                     comp))
+        :setup (j/fn [^:js {:keys [el App props]}]
+                 (d/render (r/as-element [:f> App props]) el))}))
 
 (defn init! []
-  (mount-root))
+  (start))
