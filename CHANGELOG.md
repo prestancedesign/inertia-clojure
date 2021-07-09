@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.3 - 2021-05-25
+### Fixed
+- Explicit text/html mime type for HTTP response
+
 ## 0.2.2 - 2021-05-25
 ### Changed
 - Move Inertia shared props to ":inertia-share" key in Ring request map
