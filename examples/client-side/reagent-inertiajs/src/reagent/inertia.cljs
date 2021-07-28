@@ -1,5 +1,6 @@
 (ns reagent.inertia
   (:require ["@inertiajs/inertia-react" :refer [createInertiaApp InertiaLink]]
+            ["@inertiajs/inertia" :refer [Inertia]]
             [reagent.core :as r]
             [reagent.dom :as d]
             [applied-science.js-interop :as j]))
@@ -30,10 +31,10 @@
                       :as "button"} "Refresh date"]]))
 
 ;; Add new page component to this list
-(def pages {"index" #'index
-            "demo" #'demo})
+(def pages {"index" index
+            "demo" demo})
 
-(defn start []
+(defn init! []
   (createInertiaApp
    #js {:resolve (fn [name]
                    (let [^js comp (r/reactify-component (get pages name))]
@@ -42,5 +43,5 @@
         :setup (j/fn [^:js {:keys [el App props]}]
                  (d/render (r/as-element [:f> App props]) el))}))
 
-(defn init! []
-  (start))
+(defn ^:dev/after-load reload []
+  (.reload Inertia))
