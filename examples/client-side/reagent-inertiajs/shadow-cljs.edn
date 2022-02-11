@@ -3,8 +3,8 @@
  ["src"]
 
  :dependencies
- [[reagent "1.0.0"]
-  [applied-science/js-interop "0.2.7"]]
+ [[reagent "1.1.0"]
+  [applied-science/js-interop "0.3.1"]]
 
  :builds
  {:app
