@@ -13,7 +13,7 @@
 (defn template [data-page]
   (let [render @(http/post "http://127.0.0.1:13714/render" {:body data-page
                                                             :headers {"Content-Type" "application/json"}})
-        {:keys [body head]} (json/read-value (:body render) json/keyword-keys-object-mapper)]
+        {:keys [body head]} (json/read-value (:body render))]
     (page/html5
      [:head
       [:meta {:charset "utf-8"}]
