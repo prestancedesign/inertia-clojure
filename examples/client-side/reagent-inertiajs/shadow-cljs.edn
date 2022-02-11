@@ -11,4 +11,8 @@
   {:target :browser
    :output-dir "../../shared-resources/public/js"
    :asset-path "/js"
-   :modules {:app {:init-fn reagent.inertia/init!}}}}}
+   :modules {:app {:init-fn reagent.inertia/init!}}}
+  :ssr
+  {:target :node-script
+   :main reagent.ssr/main
+   :output-to "output/ssr.js"}}}
