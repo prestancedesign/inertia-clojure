@@ -15,3 +15,5 @@
 .hg/
 .cpcache
 /examples/shared-resources/public/js/
+/.clj-kondo/.cache/
+/.lsp/

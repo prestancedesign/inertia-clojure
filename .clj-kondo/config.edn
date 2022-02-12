@@ -1,0 +1,4 @@
+{:lint-as {reagent.core/with-let clojure.core/let
+           applied-science.js-interop/let cljs.core/let
+           applied-science.js-interop/fn cljs.core/fn
+           applied-science.js-interop/defn cljs.core/defn}}
