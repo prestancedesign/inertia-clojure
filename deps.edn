@@ -1,23 +1,23 @@
 {:paths ["src"]
- :deps {org.clojure/clojure {:mvn/version "1.10.3"}
-        ring/ring-core {:mvn/version "1.9.3"}
-        metosin/jsonista {:mvn/version "0.3.3"}
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        ring/ring-core {:mvn/version "1.9.5"}
+        metosin/jsonista {:mvn/version "0.3.6"}
         metosin/muuntaja {:mvn/version "0.6.8"}}
  :aliases
  {:test {:extra-paths ["test"]
-         :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}}}
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}}}
   :runner
   {:extra-deps {com.cognitect/test-runner
                 {:git/url "https://github.com/cognitect-labs/test-runner"
                  :sha "2d69f33d7980c3353b246c28f72ffeafbd9f2fab"}}
    :main-opts ["-m" "cognitect.test-runner"
                "-d" "test"]}
-  :jar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.216"}}
+  :jar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
         :exec-fn hf.depstar/jar
         :exec-args {:jar "inertia-clojure.jar" :sync-pom true}}
-  :install {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
+  :install {:replace-deps {slipset/deps-deploy {:mvn/version "0.2.0"}}
             :exec-fn deps-deploy.deps-deploy/deploy
             :exec-args {:installer :local :artifact "inertia-clojure.jar"}}
-  :deploy {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
+  :deploy {:replace-deps {slipset/deps-deploy {:mvn/version "0.2.0"}}
            :exec-fn deps-deploy.deps-deploy/deploy
            :exec-args {:installer :remote :artifact "inertia-clojure.jar"}}}}
