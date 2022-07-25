@@ -32,6 +32,7 @@
   (middleware/wrap-format
    (fn [request]
      (let [response (handler request)
+           {body :body status :status} response
            inertia-header (rr/get-header request "x-inertia")
            inertia-version (rr/get-header request "x-inertia-version")
            method (:request-method request)
@@ -40,17 +41,18 @@
        (if (and inertia-header (= method :get) (not= inertia-version asset-version))
          {:status 409
           :headers {"x-inertia-location" url}}
-         (if (coll? (:body response))
+         (if (coll? body)
            (let [inertia-data (-> response
                                   :body
                                   (update :props merge share-props)
                                   (only-partial-data request))
                  data-page (assoc inertia-data :url url :version asset-version)]
-             (cond (= 302 (:status response)) response
-                   inertia-header {:status 200
+             (cond (= 302 status) response
+                   inertia-header {:status status
                                    :headers {"x-inertia" "true"
                                              "vary" "accept"}
                                    :body data-page}
                    :else (-> (rr/response (template (json/write-value-as-string data-page)))
+                             (rr/status status)
                              (rr/content-type "text/html"))))
            response))))))
