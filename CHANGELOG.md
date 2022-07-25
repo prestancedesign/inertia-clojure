@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.4 - 2022-07-25
+### Feature
+- Keep http status code from response
+
 ## 0.2.3 - 2021-05-25
 ### Fixed
 - Explicit text/html mime type for HTTP response
