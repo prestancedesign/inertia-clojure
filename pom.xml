@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.prestancedesign</groupId>
   <artifactId>inertia-clojure</artifactId>
-  <version>0.2.4</version>
+  <version>0.2.5</version>
   <name>com.github.prestancedesign/inertia-clojure</name>
   <description>A Clojure adapter for Inertia.js</description>
   <url>https://github.com/prestancedesign/inertia-clojure</url>
@@ -22,7 +22,7 @@
     <url>https://github.com/prestancedesign/inertia-clojure</url>
     <connection>scm:git:git://github.com/prestancedesign/inertia-clojure.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/prestancedesign/inertia-clojure.git</developerConnection>
-    <tag>v0.2.4</tag>
+    <tag>v0.2.5</tag>
   </scm>
   <dependencies>
     <dependency>
@@ -31,9 +31,9 @@
       <version>1.11.1</version>
     </dependency>
     <dependency>
-      <groupId>ring</groupId>
-      <artifactId>ring-core</artifactId>
-      <version>1.9.5</version>
+      <groupId>metosin</groupId>
+      <artifactId>muuntaja</artifactId>
+      <version>0.6.8</version>
     </dependency>
     <dependency>
       <groupId>metosin</groupId>
@@ -41,9 +41,9 @@
       <version>0.3.6</version>
     </dependency>
     <dependency>
-      <groupId>metosin</groupId>
-      <artifactId>muuntaja</artifactId>
-      <version>0.6.8</version>
+      <groupId>ring</groupId>
+      <artifactId>ring-core</artifactId>
+      <version>1.9.5</version>
     </dependency>
   </dependencies>
   <build>
