@@ -2,7 +2,7 @@
 
 ## 0.2.4 - 2022-07-25
 ### Feature
-- Keep http status code from response
+- Keep http status code from response (fixes https://github.com/prestancedesign/inertia-clojure/issues/4)
 
 ## 0.2.3 - 2021-05-25
 ### Fixed
