@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.2.5 - 2022-07-25
+### Changed
+- Switch to tools.build
+- Upgrade to Clojure 1.11.1
+- Upgrade to Ring 1.9.5
+- Upgrade to Jsonista 0.3.6
+
 ## 0.2.4 - 2022-07-25
 ### Feature
 - Keep http status code from response (fixes https://github.com/prestancedesign/inertia-clojure/issues/4)
